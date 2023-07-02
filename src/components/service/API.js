@@ -11,16 +11,18 @@ export const getTrendingMovies = async () => {
 };
 
 
-// export const getDetailsMovies = async (id) => {
-//     const {data} = await axios.get(`/movies/get-movie-details?api_key=${API_KEY}&movieId=${id}`);
-//     console.log(data);
-//     return data;
-// }
-
 export const getDetalisMovies = async id => {
-  const { data } = await axios.get(
-    `movie/${id}?api_key=${API_KEY}&language=en-US`
-  );
-console.log(data);
-  return data;
+    const { data } = await axios.get(
+        `movie/${id}?api_key=${API_KEY}&language=en-US`
+    );
+    console.log(data);
+    return data;
 };
+
+export const getCastMovies = async id => {
+        const { data } = await axios.get(
+        `movie/${id}/credits?api_key=${API_KEY}&language=en-US`
+    );
+    console.log(data);
+    return data;
+}
