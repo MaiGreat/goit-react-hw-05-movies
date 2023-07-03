@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import defaultActor from '../../imgs/cat-png.webp'
+import css from './cast.module.css'
 
 import { getCastMovies } from "components/service/API";
 
@@ -26,20 +28,20 @@ const Cast = () => {
     }
 
     return (
-        <div>
+        <div className={css.cast}>
             {cast
-                .slice(0, 15)
+                .slice(0, 10)
                 .map(({ id, profile_path, original_name, character }) => (
-                    <div key={id}>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                    <div className={css.actor} key={id}>
+                        <img className={css['cast-img']}
+                            src={profile_path ? `https://image.tmdb.org/t/p/w500/${profile_path}` : defaultActor}
                             alt={original_name}
                         />
-                        <p>
-                            <span>Actor:</span> {original_name}
+                        <p className={css.text}>
+                            <span className={css['text-p']}>Actor:</span> {original_name}
                         </p>
-                        <p>
-                            <span>Character:</span> {character}
+                        <p className={css.text}>
+                            <span className={css['text-p']}>Character:</span> {character}
                         </p>
                     </div>
                 ))}

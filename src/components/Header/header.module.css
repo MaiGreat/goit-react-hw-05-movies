@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    gap: 8px;
+    padding: 20px;
+    height: 38px;
+    background-color: #3379ab;
+    position: relative;
+    box-shadow: -2px 12px 25px rgba(4, 7, 0, 13.1);
+}
+
+.text {
+    display: inline;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 0.6px;
+    transition: font-size 0.3s;
+    }
+    
+    .text:hover {
+        font-size: 18px;
+    }

@@ -1,0 +1,29 @@
+.cast {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 28px;
+}
+.cast-img {
+    width: 120px;
+    height: 180px;
+}
+
+.text {
+    width: 120px;
+}
+
+
+
+.text-p{
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+
+}
+
+.reviews:hover {
+    transform: none;
+    transition: none;
+}

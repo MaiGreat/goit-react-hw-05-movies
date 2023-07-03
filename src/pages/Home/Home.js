@@ -22,7 +22,12 @@ const Home = () => {
 
     return (
         <>
-            <h1>Trending today</h1>
+            <h1 style={{
+                fontFamily: 'Caprasimo',
+                fontWeight: 'bold',
+                fontSize: '48px',
+                textAlign: 'center',
+            }}>Trending today</h1>
             {isLoading ? (
                 <div>Loading...</div>
             ) : (
