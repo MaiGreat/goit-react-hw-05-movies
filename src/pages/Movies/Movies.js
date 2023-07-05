@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'components/service/API';
 import FilmList from 'components/FilmList/FilmList';
+
 import css from './Movies.module.css';
 
 const Movies = () => {

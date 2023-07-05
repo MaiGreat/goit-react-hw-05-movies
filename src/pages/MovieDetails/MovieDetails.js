@@ -3,6 +3,7 @@ import { useParams, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDetalisMovies } from "components/service/API"
+import defaultMovieImg from '../../imgs/picture-coming-soon.webp'
 import css from './MovieDetalis.module.css'
 
 const MovieDetails = () => {
@@ -31,8 +32,8 @@ const MovieDetails = () => {
         <div>
             <div className={css.details}>
                 <img className={css.movie}
-                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : 'Movie Image'}
-                    alt={movie.tagline ? movie.tagline : 'Movie Image'}
+                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultMovieImg}
+                    alt={movie.tagline ? movie.tagline : defaultMovieImg}
                 />
                 <div className={css['list-details']}>
                     <h2 className={css.h2}>Movie Details</h2>
