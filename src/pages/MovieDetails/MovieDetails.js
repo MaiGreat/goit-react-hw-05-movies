@@ -2,9 +2,10 @@
 import { useParams, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getDetalisMovies } from "service/API"
+import { getDetalisMovies } from "../../service/API"
 import defaultMovieImg from '../../imgs/picture-coming-soon.webp'
 import css from './MovieDetalis.module.css'
+import Loader from "components/Loader/Loader";
 
 const MovieDetails = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const MovieDetails = () => {
     }, [id]);
 
     if (!movie) {
-        return <div>Loading...</div>;
+        return <div><Loader/></div>;
     }
 
     return (
@@ -35,6 +36,7 @@ const MovieDetails = () => {
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultMovieImg}
                     alt={movie.tagline ? movie.tagline : defaultMovieImg}
                 />
+                {error && <p>Oops... Something went wrong.</p>}
                 <div className={css['list-details']}>
                     <h2 className={css.h2}>Movie Details</h2>
             <p className={css.title}>{movie.title}</p>

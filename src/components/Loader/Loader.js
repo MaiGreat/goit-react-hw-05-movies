@@ -1,5 +1,5 @@
-import { DNA } from 'react-loader-spinner'
-import css from './Loder.module.css'
+import { Dna } from 'react-loader-spinner'
+import css from './Loader.module.css'
 
 export const Loader = () => {
     return (
@@ -15,3 +15,5 @@ export const Loader = () => {
         </div>
     )
 }
+
+export default Loader;

@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'service/API';
 import FilmList from 'components/FilmList/FilmList';
-
+import Loader from 'components/Loader/Loader';
 import css from './Movies.module.css';
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const navigate = useNavigate();
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const currentQuery = searchParams.get('query');
@@ -18,8 +19,8 @@ const Movies = () => {
             try {
                 const movieByQuery = await getMovieByQuery(currentQuery);
                 setMovies(movieByQuery);
-            } catch (e) {
-                console.log(e);
+            } catch (error) {
+                setError(error.message)
             }
         };
         fetchMovieByQuery();
@@ -29,7 +30,6 @@ const Movies = () => {
         e.preventDefault();
         const query = e.target.query.value;
         setSearchParams({ query });
-        navigate(`/movies?query=${query}`);
     };
 
     return (
@@ -41,6 +41,8 @@ const Movies = () => {
                     <button className={css.btn} type="submit">Submit</button>
                 </label>
             </form>
+            {error && <p>Oops...Somesing went wrong..</p>}
+            {isLoading && <div><Loader/></div>}
             {movies.length > 0 && <FilmList movies={movies} />}
         </div>
     );

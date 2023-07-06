@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { getTrendingMovies } from "service/API"; 
+import { getTrendingMovies } from "../../service/API"; 
 import FilmList from "components/FilmList/FilmList";
+import Loader from "components/Loader/Loader";
     
 const Home = () => {
     const [movies, setMovies] = useState([]);
@@ -30,10 +31,11 @@ const Home = () => {
                 textAlign: 'center',
             }}>Trending today</h1>
             {isLoading ? (
-                <div>Loading...</div>
+                <Loader />
             ) : (
                 <FilmList movies={movies} />
             )}
+            {error && <p>Oops...Somesing went wrong..</p>}
         </>
     );
 };

@@ -1,15 +1,17 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "components/Loader/Loader";
 import defaultActor from '../../imgs/cat-png.webp'
 import css from './cast.module.css'
 
-import { getCastMovies } from "service/API";
+import { getCastMovies } from "../../service/API";
 
 const Cast = () => {
     const { id } = useParams();
     const [cast, setCast] = useState(null);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchCastMovies = async () => {
@@ -25,11 +27,12 @@ const Cast = () => {
     }, [id])
 
     if (!cast) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     return (
         <div className={css.cast}>
+
             {cast
                 .slice(0, 10)
                 .map(({ id, profile_path, original_name, character }) => (
