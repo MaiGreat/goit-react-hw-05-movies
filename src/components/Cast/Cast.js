@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import defaultActor from '../../imgs/cat-png.webp'
 import css from './cast.module.css'
 
-import { getCastMovies } from "components/service/API";
+import { getCastMovies } from "service/API";
 
 const Cast = () => {
     const { id } = useParams();
     const [cast, setCast] = useState(null);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchCastMovies = async () => {
@@ -17,7 +18,7 @@ const Cast = () => {
                 setCast(castMovies.cast)
                 console.log(castMovies);
             } catch (error) {
-                console.error('Error fetching movie cast:', error);
+                setError(error.message)
             }
         }
         fetchCastMovies()

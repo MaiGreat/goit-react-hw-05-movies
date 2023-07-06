@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { getTrendingMovies } from "components/service/API"; 
+import { getTrendingMovies } from "service/API"; 
 import FilmList from "components/FilmList/FilmList";
     
 const Home = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -13,7 +14,7 @@ const Home = () => {
                 setMovies(film);
                 setIsLoading(false);
             } catch (error) {
-                console.error('Error fetching movies:', error);
+                setError(error.message)
             }
         };
 

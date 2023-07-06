@@ -2,14 +2,14 @@
 import { useParams, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getDetalisMovies } from "components/service/API"
+import { getDetalisMovies } from "service/API"
 import defaultMovieImg from '../../imgs/picture-coming-soon.webp'
 import css from './MovieDetalis.module.css'
 
 const MovieDetails = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
-
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -17,7 +17,7 @@ const MovieDetails = () => {
                 const movieDetails = await getDetalisMovies(id);
                 setMovie(movieDetails);
             } catch (error) {
-                console.error('Error fetching movie details:', error);
+                setError(error.message)
             }
         };
 

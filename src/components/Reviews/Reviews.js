@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getRewiewsMovies } from "components/service/API";
+import { getRewiewsMovies } from "service/API";
 import css from "./rewiews.module.css"
 
 const Reviews = () => {
     const { id } = useParams();
     const [reviews, setReviews] = useState(null);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const fetchReviews = async () => {
@@ -14,7 +15,7 @@ const Reviews = () => {
                 setReviews(reviewsMovies.results);
                 console.log(reviewsMovies.results);
             } catch (error) {
-                console.log('Error fetching movie reviews:', error);
+                setError(error.message)
             }
         };
 
