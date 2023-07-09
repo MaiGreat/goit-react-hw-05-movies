@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/922.2084bbf1.chunk.js","mappings":"0JASA,UARiB,WACb,OACI,0BACI,uBAAG,oDAGd,C","sources":["pages/NotFound.js"],"sourcesContent":["\nconst notFound = () => {\n    return (\n        <div>\n            <p>ПОМИЛКА 404</p>\n        </div>\n    )\n}\n\nexport default notFound;"],"names":[],"sourceRoot":""}
