@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import css from './filmList.module.css'
 import defaultImg  from '../../imgs/picture-coming-soon.webp'
 
@@ -21,5 +22,9 @@ const FilmList = ({ movies }) => {
         </ul>
     );
 };
+
+FilmList.propTypes = {
+    movies: PropTypes.string.isRequired
+}
 
 export default FilmList;

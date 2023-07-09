@@ -13,6 +13,7 @@ header {
     position: relative;
     border-radius: 8px;
     box-shadow: -2px 12px 25px rgba(4, 7, 0, 13.1);
+    margin-bottom: 24px;
 }
 
 .Navigation {

@@ -16,11 +16,15 @@ const Cast = () => {
     useEffect(() => {
         const fetchCastMovies = async () => {
             try {
+                setIsLoading(true);
                 const castMovies = await getCastMovies(id)
                 setCast(castMovies.cast)
                 console.log(castMovies);
             } catch (error) {
                 setError(error.message)
+            }
+            finally {
+                setIsLoading(false); 
             }
         }
         fetchCastMovies()
@@ -32,7 +36,8 @@ const Cast = () => {
 
     return (
         <div className={css.cast}>
-
+            {error && <p>Oops...Somesing went wrong..</p>}
+            {isLoading && <div><Loader/></div>}
             {cast
                 .slice(0, 10)
                 .map(({ id, profile_path, original_name, character }) => (

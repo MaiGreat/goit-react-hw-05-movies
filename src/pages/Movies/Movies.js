@@ -15,14 +15,19 @@ const Movies = () => {
         const currentQuery = searchParams.get('query');
         if (!currentQuery) return;
 
-        const fetchMovieByQuery = async () => {
-            try {
-                const movieByQuery = await getMovieByQuery(currentQuery);
-                setMovies(movieByQuery);
-            } catch (error) {
-                setError(error.message)
-            }
+    const fetchMovieByQuery = async () => {
+    try {
+        setIsLoading(true); 
+        const movieByQuery = await getMovieByQuery(currentQuery);
+        setMovies(movieByQuery);
+    } catch (error) {
+        setError(error.message);
+    } finally {
+ // Встановлюємо після завершення завантаження (навіть якщо виникла помилка)
+        setIsLoading(false); 
+    }
         };
+
         fetchMovieByQuery();
     }, [searchParams]);
 

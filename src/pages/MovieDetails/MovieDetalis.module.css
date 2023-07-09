@@ -55,3 +55,17 @@
     transform: scale(1.2);
     transition: transform 0.3s ease;
 }
+
+.back {
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 900;
+    color: blue;
+    margin-left: 60px;
+    
+}
+
+.back:hover {
+    color: black;
+    font-size: 22px;
+}

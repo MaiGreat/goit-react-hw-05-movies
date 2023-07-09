@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getRewiewsMovies } from "service/API";
+import { getRewiewsMovies } from "../../service/API";
+import Loader from "components/Loader/Loader";
 import css from "./rewiews.module.css"
 
 const Reviews = () => {
@@ -23,11 +24,12 @@ const Reviews = () => {
     }, [id]);
 
     if (!reviews) {
-        return <div>Loading...</div>;
+        return <div><Loader/></div>;
     }
 
     return (
         <div>
+            {error && <p>Oops...Somesing went wrong..</p>}
             {reviews.length === 0 ? (
                 <h3>No Reviews.</h3>
             ) : (
@@ -42,6 +44,7 @@ const Reviews = () => {
                     ))}
                 </div>
             )}
+            
         </div>
     );
 };
